@@ -1,0 +1,14 @@
+package DataStructures;
+
+public class Node {
+
+	public int val;
+	public TreeNode left;
+	public TreeNode right;
+	
+	public Node(int val){
+		this.val = val;
+	}
+	
+	
+}

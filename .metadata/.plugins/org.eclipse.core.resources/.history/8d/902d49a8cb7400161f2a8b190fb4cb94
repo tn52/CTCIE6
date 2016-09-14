@@ -1,0 +1,29 @@
+package Hard;
+
+/**
+ * Design an algorithm that finds the smallest K numbers in a array
+ * @author guestuser
+ *
+ */
+
+public class SmallestK {
+
+	
+	
+	public static void main(String args[]){
+		int[] array = {6,3,5,8,0,34,4,6};
+		int k = 4;
+		
+		smallestK(array, k);
+		
+	}
+
+	private static void smallestK(int[] array, int k) {
+		
+		if(array==null || array.length==0)
+			System.out.println("null or empty array");
+		
+		
+		
+	}
+}

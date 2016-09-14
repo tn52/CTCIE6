@@ -1,0 +1,77 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class LinkedList {
+	
+	static Node head;
+	
+	
+	public LinkedList(Node head){
+		this.head = head;
+	}
+	
+	
+	public static void add(int val){
+		
+		Node temp = head;
+		
+		while (temp.next!=null){
+			temp = temp.next;
+		}
+		
+		Node n = new Node(val);
+		temp.next = n;
+		
+	}
+	
+	
+	public static void remove (int val){
+		Node temp = head;
+		
+		while(temp.val == val){
+			head = temp.next;
+		}
+		
+		temp = head;
+		
+		
+		
+		while(temp.next!=null || temp!=null){
+			
+			while(temp.next.val==val)
+				temp.next = temp.next.next;
+			
+			temp = temp.next;
+			
+		}
+		
+		
+	}
+
+	public static int getLength(){
+		
+		Node temp = head;
+		
+		int counter = 1;
+		
+		while(temp.next!=null){
+			temp = temp.next;
+			counter++;
+		}
+		
+		return counter;
+	}
+	
+	public class Node{
+		int val;
+		Node next;
+		
+		public static Node(int val){
+			
+			this.val = val;
+		}
+		
+		
+	}
+	
+}

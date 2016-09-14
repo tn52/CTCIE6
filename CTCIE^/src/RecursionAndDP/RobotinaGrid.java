@@ -1,6 +1,7 @@
 package RecursionAndDP;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import DataStructures.Coordinate;
 
@@ -79,6 +80,42 @@ public class RobotinaGrid {
 		}
 		return false;
 		
+	}
+	
+	
+	//Cracking the coding interview solution
+	
+	ArrayList<Coordinate> getPath (boolean[][] maze){
+		if(maze==null || maze.length==0)
+			return null;
+		HashMap<Coordinate, Boolean> cache = new HashMap<Coordinate, Boolean>();
+		ArrayList<Coordinate> path = new ArrayList<Coordinate>();
+		if(getPath(maze, maze.length-1, maze[0].length-1, path, cache)){
+			return path;
+		}
+		
+		return null;
+	}
+
+
+	private boolean getPath(boolean[][] maze, int i, int j, ArrayList<Coordinate> path2, HashMap<Coordinate, Boolean> cache) {
+		if(i<0 || j<0 || !maze[i][j])
+			return false;
+		
+		Coordinate c = new Coordinate(i,j);
+		if(cache.containsKey(c))
+			return cache.get(c);
+		
+		
+		
+		if(i==0&&j==0 || getPath(maze, i-1,j,path2, cache) || getPath(maze, i,j-1,path2, cache)){
+			path2.add(c);
+			cache.put(c, true);
+			return true;
+		}
+		
+		cache.put(c, false);
+		return false;
 	}
 	
 	

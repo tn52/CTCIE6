@@ -1,0 +1,114 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class LinkedList {
+	
+	public static Node head;
+	
+	
+	public LinkedList(){
+
+	}
+	
+	
+	public static void add(int val){
+		
+		if(head==null){
+			Node temp = new Node(val);
+			head = temp;
+			return;
+		}
+		
+		Node temp = head;
+		
+		
+		while (temp.next!=null){
+			temp = temp.next;
+		}
+		
+		Node n = new Node(val);
+//		System.out.println(val);
+		temp.next = n;
+		
+	}
+	
+	
+	public static void remove (int val){
+		Node temp = head;
+		
+		while(temp.val == val){
+			head = temp.next;
+		}
+		
+		temp = head;
+		
+		while(temp.next!=null){
+			
+//			System.out.println(temp.val);
+//			System.out.println(temp.next);
+//			System.out.println();
+			
+			if(temp.next.val==val){
+				temp.next = temp.next.next;
+//				System.out.println(temp.next.val);
+			}
+			temp = temp.next;
+			
+		}
+		
+		
+	}
+
+	public static int getLength(){
+		
+		Node temp = head;
+		
+		int counter = 1;
+		
+		while(temp.next!=null){
+			temp = temp.next;
+			counter++;
+		}
+		
+		return counter;
+	}
+	
+	public static void printList(Node head){
+		Node temp = head;
+		while(temp!=null){
+			System.out.println(temp.val);
+			temp = temp.next;
+			
+		}
+		
+	}
+	
+	public static class Node{
+		int val;
+		Node next;
+		
+		public Node(int val){
+			
+			this.val = val;
+		}
+		
+		
+	}
+	
+	
+	public static void main(String args[]){
+		LinkedList linkedList = new LinkedList();
+		linkedList.add(1);
+		linkedList.add(2);
+		linkedList.add(3);
+		
+		linkedList.remove(2);
+		
+		linkedList.printList(head);
+		
+//		System.out.println(linkedList.getLength());
+		
+	}
+	
+	
+}

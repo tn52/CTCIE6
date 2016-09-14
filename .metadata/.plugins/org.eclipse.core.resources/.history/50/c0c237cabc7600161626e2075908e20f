@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class LinkedList {
+	
+	
+	
+
+	
+	
+	public class Node{
+		int val;
+		Node next;
+		
+		Node(int val){
+			
+			this.val = val;
+		}
+		
+		
+	}
+	
+}

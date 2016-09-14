@@ -1,0 +1,78 @@
+package TreesAndGraphs;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import DataStructures.Node;
+
+public class ListOfDepths {
+
+	
+	public static void listOfDepths_DFS(Node root, int level, ArrayList<LinkedList<Node>> ret){
+		
+		if(root==null)
+			return;
+		
+		if(ret.size()==level){
+			LinkedList<Node> current = new LinkedList<Node>();
+			current.add(root);
+			ret.add(current);
+		}else{
+			LinkedList<Node> current = ret.get(level);
+			current.add(root);
+		}
+		listOfDepths_DFS(root.left, level+1, ret);
+		listOfDepths_DFS(root.right, level+1, ret);
+		
+		return;
+		
+	}
+	
+	
+	
+	public static void main(String args[]){
+		System.out.println("Hello World!");
+		
+		Node root = new Node(1);
+		
+		ArrayList<LinkedList<Node>> ret = new ArrayList<LinkedList<Node>>();
+		
+		listOfDepths_DFS(root, 0, ret);
+		
+		
+		ret = listOfDepths_BFS(root);
+	}
+	
+	
+	public static ArrayList<LinkedList<Node>> listOfDepths_BFS(Node root){
+		
+		if(root==null)
+			return null;
+		
+		ArrayList<LinkedList<Node>> ret = new ArrayList<LinkedList<Node>>();
+		
+		LinkedList<Node> q = new LinkedList<Node>();		
+		q.add(root);
+		ret.add(q);
+		
+		
+		while(!q.isEmpty()){
+
+			LinkedList<Node> q2 = new LinkedList<Node>();	
+
+			for(Node temp:q){
+				
+				q2.add(temp.left);
+				q2.add(temp.right);
+			}
+			ret.add(q2);
+			
+			q = q2;
+
+		}
+		
+		
+		return ret;
+		
+	}
+}

@@ -1,0 +1,72 @@
+package TreesAndGraphs;
+
+import DataStructures.Node;
+
+/**
+	 * Implement a function to check if a binary tree is a binary search tree. 
+	 * @author guestuser
+	 *
+	 */
+	
+public class ValidateBST {
+	 static int last_printed;
+
+	
+	//this is wrong!!
+	public static boolean validateBST(Node root){
+		
+		if(root==null)
+			return true;
+			
+		else if(root.left==null && root.right==null)
+			return true;
+		
+		else if(root.left==null && root.right!=null && root.val<=root.right.val)
+			return true;
+		
+		else if(root.right==null && root.left!=null && root.val>=root.left.val)
+			return true;
+		
+		else if(root.left.val<=root.val && root.val <=root.right.val)
+			return validateBST(root.right) && validateBST(root.left);
+		
+		else
+			return false;	
+	}
+	
+	public static void main(String args[]){
+		System.out.println("Hello World!");
+		
+		Node root = new Node(4);
+		root.left = new Node(2);
+		root.left.left = new Node(1);
+		root.left.right = new Node(3);
+		root.right = new Node(8);
+		root.right.left = new Node(3);
+		root.right.right = new Node(10);
+		
+		System.out.println(validateBST(root));
+	}
+	
+	
+	public static boolean validateBST_fast(Node root){
+		
+		if(root==null)
+			return true;
+		
+		if(!validateBST_fast(root.left))
+			return false;
+		
+//		if(last_printed != null && root.val <= last_printed)
+//			return false;
+		
+		last_printed = root.val;
+		
+		if(!validateBST_fast(root.right))
+			return false;
+		
+		return true;
+		
+		}
+	
+}

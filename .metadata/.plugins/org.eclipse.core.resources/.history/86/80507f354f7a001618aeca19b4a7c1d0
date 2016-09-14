@@ -1,0 +1,28 @@
+package TreesAndGraphs;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import DataStructures.Node;
+
+public class BSTSequences {
+
+	public static void BSTSequences(Node root, ArrayList<Node> path){
+		
+		if(root==null)
+			return;
+		
+		
+		
+		
+	}
+	
+	
+	
+	public static void main(String args[]){
+		
+		LinkedList<Node> queue = new LinkedList<Node>();
+		Node root = new Node(5);
+		ArrayList<Node> path = new ArrayList<Node>();
+	}
+}
